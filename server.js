@@ -8,7 +8,7 @@ const routes = require('./routes');
 const web3Service = require('./web3Service');
 
 const app = fastify({
-  logger: true
+  logger: { prettyPrint: true }
 });
 
 app.register(routes);
