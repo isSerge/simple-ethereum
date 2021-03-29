@@ -1,7 +1,7 @@
 'use strict';
 
 class Web3Service {
-  constructor({ web3 }) {
+  constructor(web3) {
     this.web3 = web3;
   }
 
@@ -27,18 +27,8 @@ class Web3Service {
   }
 
   async getBalance(address) {
-    const isAddress = await this.isValidAddress(address);
-
-    if (isAddress) {
-      const balance = await this.web3.eth.getBalance(address);
-      return { address, balance, symbol: 'eth', units: 'wei' };
-    }
-
-    throw new Error('Invalid address');
-  }
-
-  isValidAddress(address) {
-    return this.web3.utils.isAddress(address);
+    const balance = await this.web3.eth.getBalance(address);
+    return { address, balance, symbol: 'eth', units: 'wei' };
   }
 
   sendTransaction(tx) {
