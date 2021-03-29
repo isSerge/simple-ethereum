@@ -1,10 +1,11 @@
 'use strict';
 
+require('dotenv').config();
 const fastify = require('fastify');
 
+const config = require('./config');
 const routes = require('./routes');
-
-const PORT = 3000;
+const web3Service = require('./web3Service');
 
 const app = fastify({
   logger: true
@@ -12,7 +13,9 @@ const app = fastify({
 
 app.register(routes);
 
-app.listen(PORT, (err, address) => {
+app.decorate('web3Service', web3Service);
+
+app.listen(config.port, (err, address) => {
   if (err) {
     app.log.error(err);
     process.exit(1);

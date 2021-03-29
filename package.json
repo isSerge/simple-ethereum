@@ -14,12 +14,13 @@
   },
   "scripts": {
     "lint": "eslint . && prettier --check \"**/*.js\" \"**/*.json\" \"**/.*rc\" \"**/*.ts\"",
-    "fmt": "prettier --write \"**/*.js\" \"**/*.json\" \"**/.*rc\" \"**/*.ts\"",
     "types": "tsc -p types/tsconfig.json",
     "test": "npm run lint && npm run types && tap",
     "dev": "nodemon server.js"
   },
   "dependencies": {
-    "fastify": "^3.14.1"
+    "dotenv": "^8.2.0",
+    "fastify": "^3.14.1",
+    "web3": "^1.3.4"
   }
 }
