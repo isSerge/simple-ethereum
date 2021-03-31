@@ -11,9 +11,9 @@ const app = fastify({
   logger: { prettyPrint: true }
 });
 
-app.register(blockRoutes);
-app.register(accountRoutes);
-app.register(transactionRoutes);
+app.register(blockRoutes, { prefix: '/api/block' });
+app.register(accountRoutes, { prefix: '/api/account' });
+app.register(transactionRoutes, { prefix: '/api/transaction' });
 
 app.listen(config.port, (err, address) => {
   if (err) {
