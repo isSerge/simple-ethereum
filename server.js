@@ -2,18 +2,18 @@
 
 require('dotenv').config();
 const fastify = require('fastify');
-
 const config = require('./config');
-const routes = require('./routes');
-const web3Service = require('./web3Service');
+const blockRoutes = require('./lib/block/routes');
+const accountRoutes = require('./lib/account/routes');
+const transactionRoutes = require('./lib/transaction/routes');
 
 const app = fastify({
   logger: { prettyPrint: true }
 });
 
-app.register(routes);
-
-app.decorate('web3Service', web3Service);
+app.register(blockRoutes);
+app.register(accountRoutes);
+app.register(transactionRoutes);
 
 app.listen(config.port, (err, address) => {
   if (err) {
