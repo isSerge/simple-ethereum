@@ -8,7 +8,7 @@ const accountRoutes = require('./lib/account/routes');
 const transactionRoutes = require('./lib/transaction/routes');
 
 const app = fastify({
-  logger: { prettyPrint: true }
+  logger: { prettyPrint: true },
 });
 
 app.register(blockRoutes, { prefix: '/api/block' });
