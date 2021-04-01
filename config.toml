@@ -5,6 +5,10 @@ chain = "dev"
 reseal_min_period = 0
 min_gas_price = 0
 
+[rpc]
+interface = "all"
+apis = ["all"]
+
 [account]
 unlock = ["0x00a329c0648769a73afac7f9381e08fb43dbea72"]
 password = ["coinbase-password"]
