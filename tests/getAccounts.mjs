@@ -1,12 +1,11 @@
-'use strict';
+import tap from 'tap';
 
-const { test, tearDown } = require('tap');
-const build = require('../app');
-const config = require('./testConfig');
+import build from '../app.mjs';
+import config from './testConfig.json';
 
-test('returns accounts', async ({ equal, ok }) => {
+tap.test('returns accounts', async ({ equal, ok }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const response = await app.inject({
     method: 'GET',

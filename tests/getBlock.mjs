@@ -1,11 +1,10 @@
-'use strict';
+import tap from 'tap';
 
-const { test, tearDown } = require('tap');
-const build = require('../app');
+import build from '../app.mjs';
 
-test('returns block by number', async ({ equal, ok }) => {
+tap.test('returns block by number', async ({ equal, ok }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const blockNumber = 0;
 
@@ -22,9 +21,9 @@ test('returns block by number', async ({ equal, ok }) => {
   equal(response.json().number, blockNumber);
 });
 
-test('returns code 400 if block number is not provided', async ({ equal }) => {
+tap.test('returns code 400 if block number is not provided', async ({ equal }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const response = await app.inject({
     method: 'GET',
@@ -34,9 +33,9 @@ test('returns code 400 if block number is not provided', async ({ equal }) => {
   equal(response.statusCode, 400);
 });
 
-test('returns code 400 if block number value is invalid', async ({ equal }) => {
+tap.test('returns code 400 if block number value is invalid', async ({ equal }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const response = await app.inject({
     method: 'GET',

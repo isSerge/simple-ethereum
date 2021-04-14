@@ -1,11 +1,10 @@
-'use strict';
+import tap from 'tap';
 
-const { test, tearDown } = require('tap');
-const build = require('../app');
+import build from '../app.mjs';
 
-test('returns gas price', async ({ equal, type }) => {
+tap.test('returns gas price', async ({ equal, type }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const response = await app.inject({
     method: 'GET',

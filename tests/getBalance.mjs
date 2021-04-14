@@ -1,12 +1,11 @@
-'use strict';
+import tap from 'tap';
 
-const { test, tearDown } = require('tap');
-const build = require('../app');
-const config = require('./testConfig');
+import build from '../app.mjs';
+import config from './testConfig.json';
 
-test('returns account balance', async ({ equal, ok }) => {
+tap.test('returns account balance', async ({ equal, ok }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const address = config.coinbase;
 
@@ -22,9 +21,9 @@ test('returns account balance', async ({ equal, ok }) => {
   ok(response.json().balance);
 });
 
-test('returns code 400 if address is invalid', async ({ equal }) => {
+tap.test('returns code 400 if address is invalid', async ({ equal }) => {
   const app = build();
-  tearDown(() => app.close());
+  tap.tearDown(() => app.close());
 
   const address = 'not valid address';
 

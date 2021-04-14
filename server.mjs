@@ -1,7 +1,6 @@
-'use strict';
-
-const app = require('./app');
-const config = require('./config');
+import './env.mjs'
+import app from './app.mjs';
+import config from './config.mjs';
 
 const server = app({
   logger: { prettyPrint: true },
