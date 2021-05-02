@@ -9,7 +9,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "import/extensions": [2, "ignorePackages"]
+    "import/extensions": [2, "ignorePackages"],
+    "import/prefer-default-export": 0
   },
   "settings": {
     "import/resolver": {
